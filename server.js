@@ -45,6 +45,11 @@ app.post('/api/quotes', (req, res, next) => {
     }
 })
 
+app.delete('/api/quotes/:id', (req, res) => {
+    const id = req.params.id;
+    console.log('so far so good')
+})
+
 app.listen(PORT,() => {
   console.log(`Server up and running on ${PORT}`)
 })

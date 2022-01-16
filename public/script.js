@@ -2,6 +2,7 @@ const fetchAllButton = document.getElementById('fetch-quotes');
 const fetchRandomButton = document.getElementById('fetch-random');
 const fetchByAuthorButton = document.getElementById('fetch-by-author');
 
+const deleteQuoteButton = document.querySelector('.delete-btn');
 const quoteContainer = document.getElementById('quote-container');
 const quoteText = document.querySelector('.quote');
 const attributionText = document.querySelector('.attribution');
@@ -23,13 +24,25 @@ const renderQuotes = (quotes = []) => {
       const newQuote = document.createElement('div');
       newQuote.className = 'single-quote';
       newQuote.innerHTML = `<div class="quote-text">${quote.quote}</div>
-      <div class="attribution">- ${quote.person}</div>`;
+      <div class="attribution">- ${quote.person} - <i>${quote.year}</i></div>
+      <span><button class="delete-btn" style="padding:5px; font-size:10px">Delete</button></span>`;
       quoteContainer.appendChild(newQuote);
     });
   } else {
     quoteContainer.innerHTML = '<p>Your request returned no quotes.</p>';
   }
 }
+
+const deleteQuote = (id) => {
+    console.log('this id')
+}
+
+deleteQuoteButton.addEventListener('click', () => {
+    fetch('/api/quotes/:id')
+    const id = req.params.id;
+    const thisID = this.quotes.id;
+    deleteQuote();
+})
 
 fetchAllButton.addEventListener('click', () => {
   fetch('/api/quotes')
